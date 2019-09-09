@@ -1,0 +1,3 @@
+To run gnome-terminal on ubuntu as a separate process, use --disable-factory
+ - Note:  This was necessary to open gnome using X forwarding because the remote instance of gnome would always run the new window instead of creating a new process.
+

@@ -1,0 +1,396 @@
+/*
+  SASS Files - This is automatically compiled into css using the scss npm script in package.json each time this file is changed.
+*/
+
+$section_background_color: rgb(245, 245, 245);
+$site_accent_color: #6eceb2;
+$site_dark_accent_color: #3d884d;
+$dark_border_color:  rgb(185, 185, 185);
+$light_border_color: rgb(217, 217, 217);
+
+$progress_bar_background: rgba(0, 0, 0, 0.2);
+$current_song_background: rgba(0, 0, 0, 0.1);
+
+p {
+  font-size: 16px;
+}
+
+.audio-file-shop {
+  background-color: $section_background_color;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: $dark_border_color;
+  -webkit-box-shadow: 2px 2px 3px 0px rgba(158,158,158,1);
+  -moz-box-shadow: 2px 2px 3px 0px rgba(158,158,158,1);
+  box-shadow: 2px 2px 3px 0px rgba(158,158,158,1);
+
+  table {
+    width: 100%;
+    display: block;
+    overflow-y: auto;
+    height: 300px;
+  }
+
+  .category-row-content {
+    position: relative;
+    text-align: center;
+  }
+
+  .category-row {
+    border-bottom: 2px solid;
+    border-color: $dark_border_color;
+    background-color: rgb(220,220,220);
+  }
+  .category-row .category-name {
+    position: relative;
+    display: inline-block;
+  }
+
+  @media (min-width: 767px) {
+    .category-row .category-name {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .category-row span {
+    color: $site_dark_accent_color;
+    font-weight: normal;
+    display: block;
+    font-weight: bold;
+  }
+
+  @media (min-width: 450px) {
+    .category-row span {
+      float: right;
+      padding-right: 20px;
+    }
+  }
+
+  .song-row {
+    background-color: white;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: $light_border_color;
+    height: 30px;
+
+    img {
+      height: 20px;
+      width: 20px;
+      margin: 5px;
+    }
+    
+    .song-title {
+      text-align: left;
+      width: 100%;
+      font-weight: 100;
+    }
+
+    @media (min-width: 992px) {
+      .shopping-selection {
+        white-space: nowrap;
+        select {
+          margin-left: 20px;
+        }
+        label {
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .shopping-selection {
+      label {
+        margin-right: 20px;
+        margin-top: auto;
+        margin-bottom: auto;
+        color: $site_dark_accent_color;
+      }
+    }
+  }
+
+  .song-row.playing-true {
+    background-color: $current_song_background;
+  }
+
+  .purchase-music-form {
+    margin: 0px 0px 10px 0px;
+  }
+}
+
+// AUDIO PLAYER STYLES
+
+.audio-player {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  border-bottom: 1px solid;
+  border-color: $dark_border_color;
+
+  .audio-player-controls {
+    position: relative;
+    display: inline-block;
+    width: calc(100% - 180px);
+    padding: 6px 6px 6px 0px;
+    height: 100%;
+
+    .current-time {
+      position: absolute;
+      left: 0;
+      bottom: 25px;
+    }
+
+    .duration {
+      position: absolute;
+      right: 6px;
+      bottom: 25px;
+    }
+
+    .progress-bar-wrapper {
+      background-color: $progress_bar_background;
+    }
+
+    .progress-bar {
+      background-color: red;
+      height: 5px;
+    }
+
+    .volume {
+      position: absolute;
+      right: 25px;
+      bottom: 10px;
+      width: 100px;
+      height: 5px;
+      opacity: 0.8;
+      transition: opacity 500ms;
+
+    	.fa-volume-down {
+        position: absolute;
+        left: 0;
+    		margin-top: -5px;
+    		color: #666;
+        margin-left: -18px;
+    	}
+
+    	.fa-volume-up {
+        position: absolute;
+        right: 0;
+    		margin-top: -5px;
+    		color: #666;
+        margin-right: -22px;
+    	}
+
+      /* The slider itself */
+      .slider {
+        -webkit-appearance: none;  /* Override default CSS styles */
+        -moz-appearance: none; /* Override default look */
+        -o-appearance: none; /* Override default look */
+        appearance: none;
+        position: absolute;
+      	left: 0;
+      	margin: 0 auto;
+      	height: 100%;
+      	width: 100%;
+      	background: #555;
+      	border-radius: 15px;
+      }
+
+      .slider-min {
+        position: absolute;
+      	left: 0;
+      	margin: 0 auto;
+      	height: 100%;
+      	width: 100%;
+      	background: rgb(68, 0, 153);
+      	border-radius: 15px;
+      }
+
+      .slider:focus {
+        outline: none; /* Fully shown on mouse-over */
+      }
+
+      /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        position: relative;
+    		width: 20px;
+      	height: 20px;
+    		border-radius: 20px;
+      	background: #FFF;
+      	cursor: pointer;
+      	outline: none;
+        -webkit-z-index: 1;
+        -moz-z-index: 1;
+        z-index: 1;
+      }
+
+      .slider::-moz-range-thumb {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        background: #FFF;
+        margin-left: -8px;
+        margin-top: -8px;
+        cursor: pointer;
+        outline: none;
+        -webkit-z-index: 1;
+        -moz-z-index: 1;
+        z-index: 1;
+      }
+    }
+
+    .volume:hover {
+      opacity: 1;
+      transition: opacity 500ms;
+    }
+  }
+
+  .album-art {
+   height: 168px;
+   width: 168px;
+   overflow: hidden;
+   display: inline-block;
+   margin: 6px;
+
+   img {
+     width: auto;
+     height: 100%;
+     vertical-align: super; // This is entirely only necessary for Safari to look proper.  I HAVE NO IDEA WHY THIS MATTERS!
+   }
+  }
+
+  @media (max-width: 330px) {
+    .album-art {
+      display: none;
+    }
+
+    .audio-player-controls {
+      width: 100%;
+    }
+  }
+}
+
+.waveform-wrapper {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  padding-right: 6px;
+  width: 100%;
+  opacity: 0.8;
+  transition: opacity 500ms;
+}
+
+.waveform-wrapper:hover {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.waveform-playing {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.hidden {
+  display: none;
+}
+
+.audio-player-controls {
+  .o-play-btn {
+    position: absolute;
+    background: transparent;
+    border: none;
+    outline: none;
+    left: 0;
+    height: 32px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+      &__icon {
+        $size: 30px;
+        height: $size;
+        width: $size;
+        line-height: $size;
+        position: relative;
+        z-index: 0;
+        box-sizing: border-box;
+        display: inline-block;
+        overflow: hidden;
+
+          &:before, &:after {
+            content: '';
+            position: absolute;
+            transition: 0.3s;
+            background: #000;
+            height: 100%;
+            width: 50%;
+            top: 0;
+          }
+
+          &:before {
+            left: 0;
+          }
+
+          &:after {
+            right: 0;
+          }
+      }
+
+      &__mask {
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+
+          &:before, &:after {
+              content: '';
+              position: absolute;
+              left: 0;
+              height: 100%;
+              width: 150%;
+              background: $section_background_color;
+              transition: all 0.3s ease-out;
+          }
+
+          &:before {
+              top: -100%;
+              transform-origin: 0% 100%;
+              transform: rotate(26.5deg);
+          }
+
+          &:after {
+              transform-origin: 0% 0%;
+              transform: rotate(-26.5deg);
+              top: 100%;
+          }
+      }
+
+      &--playing {
+
+          .o-play-btn {
+
+              &__icon {
+
+                  &:before {
+                      transform: translateX(-25%);
+                  }
+
+                  &:after {
+                      transform: translateX(25%);
+                  }
+              }
+
+              &__mask {
+
+                  &:before, &:after {
+                      transform: rotate(0);
+                  }
+              }
+          }
+      }
+  }
+}
